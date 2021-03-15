@@ -50,34 +50,28 @@ Description of your software in maximum 6 pages.
 \section{Motivation and significance}
 \label{}
 
-Jupyter notebook is a tool and a document format for reproducible
-scientific workflows based on computations. Those notebooks can be
-opened with the Jupyter web application which provides rich-output in
-the form of browser-side widgets. Javascipt browser based widgets, on
-the other hand, can fully exploit capabilities of modern browsers, for
-example WebGL accelerated 3d graphics. Jupyter architecture ensures
-sychronization of such front-end widget with the underlying backend
-process performing computations. It has become a very attractive way
-of accessing remote HPC resources without sacrificing interactivity.
+Jupyter is a document format and an interactive web tool known as a
+computational notebook, which researchers can use to combine software
+code, explanatory text, and multimedia resources in a single document.
+It has recently become an increasingly popular tool in data
+science\cite{perkel_why_2018}, the number of publicly available
+Jupyter notebook files on GitHub reach 10 million.
 
-K3D-jupyter is an open source, MIT licensed software for scientific
-data visualization. It is an ipywidget, i.e. it is a python object
-which has its representation in a browser. The main motivation for
-development of this software was the need for an interactive and
-flexible tool for running accessing computations on both local
-workstation as well as remote HPC resources. The front-end of
-K3D-jupyter uses capabilities of modern WebGL implementation and
-allows for fluent interaction with of the user with visualized 3d
-data. Perhaps the most important feature of Jupyter web application is
-that there are no differences for the user whether it is used locally
-or remotely. This is in contrast to classical remote-desktop
-applications, where there is always significant lag, especially in
-video intensive interactions, the browser based K3D-jupyter provides
-constant good experience across many configurations.
+K3D-jupyter is an open-source, MIT-licensed software for scientific
+data visualization within a Jupyter notebook. It was built upon
+Jupyter widgets for full exploitation of capabilities of the notebook
+rich-output architecture.  The main motivation for the development of
+this software was the need for an interactive and flexible tool for 3d
+visualization of scientific data in the notebook system. The key idea was
+to allow the user to visualize data in 3d which is efficient both in
+the case of local data exploration as well as for when working
+remotely on HPC resources. K3D-jupyter provides basic building blocks,
+which serve the purpose of constructing the most of typical
+scenarios of data visualization, but at the same time are easy to
+use. The main development strategy is to operate on rather simple
+structures, and at the same time to provide a straightforward way for
+interconnetions to powerfull external libraries.
 
-Other similar projects:
-\cite{10.1145/3093338.3104159}
-\cite{10.1093/bioinformatics/btx789}
 
 
 % Introduce the scientific background and the motivation for developing the software.
@@ -92,6 +86,37 @@ Other similar projects:
 
 % Describe the software in as much as is necessary to establish a
 % vocabulary needed to explain its impact.
+
+
+K3D-jupyter is an ipywidget, which is an eventful python object that
+has a representation in the browser. It constists of 3d interactive
+scene which can contain many different types of objects, like lines,
+meshes, volumes, vectors. The visualization is done by the javascript
+front-end which uses capabilities of modern WebGL implementation and
+allows for smooth interaction. The data displayed by the front-end is
+connected to the backend Python process by ipywidgets communication.
+Attributes of all obects on the scene, such as point positions, scalar
+fields, volumetric data, etc., can be updated from the back-end and 
+changes are automatically propagated to the front-end. The Jupyter
+notebook is a web application, and the communitation occurs over
+websockets. This perhaps is the most important feature of K3D-jupyter:
+the same code and software works regardless if it is installed locally
+or used remotely. In the contrast to a classical remote-desktop
+applications, where there is always significant lag, especially in
+video intensive interactions, the browser based K3D-jupyter provides
+a constant good experience across many configurations.
+
+There are other projects which exploit Jupyter rich-output
+capabilities for data visualisation. Pythreejs\cite{pythreejs} is an
+interface to threejs library. Nglview
+\cite{10.1093/bioinformatics/btx789}, is a Jupyter widget to
+interactively view molecular structures and
+trajectories. Ipyvolume\cite{ipyvolume} is a 3d visualization widget
+with similar set of features.
+
+Other similar projects: \cite{10.1145/3093338.3104159}
+
+
 
 
 
